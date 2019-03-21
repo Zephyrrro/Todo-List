@@ -72,11 +72,6 @@ export default {
       }
     }
   },
-  watch: {
-    hash: function () {
-      this.visibility = this.hash
-    }
-  }
 }
 </script>
 
