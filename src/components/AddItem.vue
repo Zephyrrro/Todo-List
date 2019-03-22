@@ -15,6 +15,7 @@
 // import { EventBus } from '../event-bus.js'
 export default {
   props: ['list'],
+
   data () {
     return {
       todoItem: {
@@ -23,6 +24,7 @@ export default {
       },
     }
   },
+
   methods: {
     handleSubmit () {
       this.$emit('addItem', this.todoItem)
@@ -37,10 +39,12 @@ export default {
   width: 40vw;
   margin: 0 auto;
 }
+
 input {
   width: 35vw;
   height: 30px;
 }
+
 .submit {
   width: 35vw;
   margin: 20px auto;

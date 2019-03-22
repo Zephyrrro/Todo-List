@@ -36,11 +36,13 @@ input {
   margin: 0 15px;
   outline: none;
 }
+
 .item {
   cursor: pointer;
   list-style: none;
   width: calc(40vw - 30px);
 }
+
 .item button {
   display: none;
   float: right;
@@ -48,13 +50,16 @@ input {
   width: 60px;
   background: linear-gradient(to right, red, pink);
 }
+
 .item:hover button {
   display: block;
 }
+
 .completed {
   text-decoration: line-through;
   color: #d9d9d9;
 }
+
 button {
   background-color: #ebebeb;
   height: 25px;
@@ -63,10 +68,12 @@ button {
   outline: none;
   box-shadow: 1px 4px 4px gray;
 }
+
 button:active {
   transform: translateY(3px);
   box-shadow: 1px 1px 4px gray;
 }
+
 .main {
   /* width: 50vw; */
   height: 40px;

@@ -37,9 +37,10 @@ export default {
     'add-item': AddItem,
     // 'dataFilter': DataFilter
   },
+
   data () {
     return {
-      isListEmpty: true,
+      isListEmpty: 1,
       list: [],
       checkAllSpace: new RegExp(/^[ ]*$/),
       newContent: '',
@@ -47,20 +48,23 @@ export default {
       hash: window.location.hash.slice(1)
     }
   },
+
   methods: {
     handleAdd (todoItem) {
       if (this.checkAllSpace.test(todoItem.content)) {
         alert('Do not enter any empty content!');
       } else {
         this.list.push(JSON.parse(JSON.stringify(todoItem)));
-        this.isListEmpty = false;
+        this.isListEmpty = !this.list.length;
       }
     },
+
     handleDelete (index) {
       if (confirm('确认删除？') === true) {
         this.list.splice(index, 1);
       }
     },
+
     handleModify (index) {
       this.newContent = prompt('New content:');
       if (this.newContent === null) {
@@ -72,6 +76,21 @@ export default {
       }
     }
   },
+
+  watch: {
+    list: {
+      handler: function () {
+        window.localStorage.setItem('Todo-List', JSON.stringify(this.list));
+        this.isListEmpty = !this.list.length;
+      },
+      deep: true
+    }
+  },
+
+  created: function () {
+    this.list = JSON.parse(window.localStorage.getItem('Todo-List')) || [];
+    this.isListEmpty = !this.list.length;
+  }
 }
 </script>
 
@@ -80,20 +99,24 @@ export default {
   padding: 0;
   margin: 0;
 }
+
 span {
   font-size: 12px;
 }
+
 p {
   height: 40px;
   color: gray;
   line-height: 40px;
 }
+
 .display {
   display: flex;
   align-items: center;
   flex-direction: column;
   margin-top: 30px;
 }
+
 ul {
   width: 40vw;
   background-color: #fff;
